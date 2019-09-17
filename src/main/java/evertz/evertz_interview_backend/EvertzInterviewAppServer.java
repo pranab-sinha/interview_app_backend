@@ -30,7 +30,7 @@ public class EvertzInterviewAppServer {
 		 exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding, X-Auth-Token, content-type, Authentication");
 		 
 		 printRequestInfo(exchange);
-		 String response = "Response from Backend - " + message;
+		 String response = message;
 		 exchange.sendResponseHeaders(200, response.getBytes().length);
 		 OutputStream os = exchange.getResponseBody();
 		 os.write(response.getBytes());
@@ -52,7 +52,7 @@ public class EvertzInterviewAppServer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Setting ch - " + s);
+		System.out.println("Response sample - " + s);
 		message = s;
 	}
 }
