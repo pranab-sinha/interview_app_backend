@@ -48,6 +48,10 @@ public class UIDropDownList {
 						dataToFetch = "branch";
 						keyName = "BranchList";
 					}
+					else if(details.equals("Modules")) {
+						dataToFetch = "modules";
+						keyName = "ModuleList";
+					}
 					
 					String fetchData = "select * from " + dataToFetch + ";";
 					ResultSet rs = DAOLayer.selectData(fetchData);
@@ -75,6 +79,7 @@ public class UIDropDownList {
 			    	jsonoutput.add(jsonFinal);
 		        
 			    	result = jsonoutput.toString(); 
+			    	System.out.println("Result JSON - " + result);
 			    	
 				}
 				catch (Exception e) {
