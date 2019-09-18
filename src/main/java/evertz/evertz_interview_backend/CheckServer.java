@@ -58,7 +58,7 @@ public class CheckServer {
 						
 					}
 					
-					if (onlyip == reqIp) {
+					if (onlyip.contentEquals(reqIp)) {
 						status = "Connected";
 						
 					}
