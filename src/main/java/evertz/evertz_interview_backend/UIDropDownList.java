@@ -50,6 +50,10 @@ public class UIDropDownList {
 						dataToFetch = "branch";
 						keyName = "BranchList";
 					}
+					else if(details.contentEquals("Modules")) {
+						dataToFetch = "modules";
+						keyName = "ModuleList";
+					}
 					
 					String fetchData = "select * from " + dataToFetch + ";";
 					ResultSet rs = DAOLayer.selectData(fetchData);
