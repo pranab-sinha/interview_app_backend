@@ -41,6 +41,10 @@ public class JSONMessage {
 				String command = (String) studentObject.get("Command");   
 				System.out.println(command);
 				
+				if((subsystem.equals("Server")) && (command.equals("ValidateServer"))) {
+					result = CheckServer.getServerIp(message);
+				}
+				
 				if((subsystem.equals("StudentRegistration")) && (command.equals("Save"))) {
 					result = StudentRegistration.Register(message);
 				}
