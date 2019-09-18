@@ -21,7 +21,6 @@ public class JSONMessage {
 		}
 		JSONParser jsonParser = new JSONParser();
 		String message = "[" + JSONRequestMessage + "]";
-		System.out.println("JSON request message received : " + message);
 		Object obj = jsonParser.parse(message);
 		
 		JSONArray studentList = (JSONArray) obj;
