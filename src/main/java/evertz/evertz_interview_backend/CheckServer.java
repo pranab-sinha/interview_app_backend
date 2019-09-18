@@ -16,24 +16,15 @@ public class CheckServer {
 		String result = "";
 		//Get IP and host name of the current server
 		InetAddress ip;
-		String hostname;
 		String onlyip = "";
 		try {
 			ip = InetAddress.getLocalHost();
-			hostname = ip.getHostName();
 			onlyip = ip.getHostAddress();
 			System.out.println("Only IP Address:- " + onlyip);
-			System.out.println("Your current IP address : " + ip);
-			System.out.println("Your current Hostname : " + hostname);
 
 		} catch (UnknownHostException e) {
 
 			e.printStackTrace();
-		}
-
-		//JSON parser object to parse read the response
-		if(JSONRequestMessage == null) {
-			return "NULL MESSAGE RECEIVED";
 		}
 		JSONParser jsonParser = new JSONParser();
 		String message = JSONRequestMessage;

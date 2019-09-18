@@ -12,7 +12,6 @@ import org.json.simple.parser.JSONParser;
 
 public class StudentRegistration {
 	public static String Register(String JSONRequestMessage) throws org.json.simple.parser.ParseException {
-		System.out.println("Welcome");
 		String registerNumber = "";
 		String studentName = "";
 		String dob = "";
@@ -26,11 +25,7 @@ public class StudentRegistration {
 		String Mobile = "";
 		String LanguageSelected = "";
 		String result = "";
-		
-		//JSON parser object to parse read the response
-		if(JSONRequestMessage == null) {
-			return "NULL MESSAGE RECEIVED";
-		}
+
 		JSONParser jsonParser = new JSONParser();
 		
 		String message = JSONRequestMessage;

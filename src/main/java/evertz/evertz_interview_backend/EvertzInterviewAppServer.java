@@ -44,15 +44,14 @@ public class EvertzInterviewAppServer {
 		String value = br.readLine();
 		System.out.println("Request Body");
 		System.out.println("------------");
-		System.out.println("Test :- " + value);
-		String s = "";
+		String responseString = "";
 		try {
-			s = JSONMessage.JSONParse(value);
+			responseString = JSONMessage.JSONParse(value);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Response sample - " + s);
-		message = s;
+		System.out.println("Response string - " + responseString);
+		message = responseString;
 	}
 }
