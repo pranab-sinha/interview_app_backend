@@ -38,15 +38,15 @@ public class UIDropDownList {
 					
 					if(details.equals("College")) {
 						dataToFetch = "college_details";
-						keyName = "CollegeName";
+						keyName = "CollegeList";
 					}
 					else if(details.equals("Degree")) {
 						dataToFetch = "degree";
-						keyName = "DegreeName";
+						keyName = "DegreeList";
 					}
 					else if(details.equals("Branch")) {
 						dataToFetch = "branch";
-						keyName = "BranchName";
+						keyName = "BranchList";
 					}
 					
 					String fetchData = "select * from " + dataToFetch + ";";

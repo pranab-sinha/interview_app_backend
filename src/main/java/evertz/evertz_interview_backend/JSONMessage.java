@@ -52,6 +52,7 @@ public class JSONMessage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		result = result.substring(1, result.length()-1);
 		return result;	
 	}
 }
