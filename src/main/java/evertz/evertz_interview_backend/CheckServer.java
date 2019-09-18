@@ -14,7 +14,7 @@ public class CheckServer {
 		String reqIp = "";
         String status = "";
 		String result = "";
-		//Get IP and host name of the current server
+		//Get IP and host name of the current server..
 		InetAddress ip;
         String hostname;
         String onlyip = "";
