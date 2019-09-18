@@ -75,6 +75,7 @@ public class UIDropDownList {
 			    	jsonoutput.add(jsonFinal);
 		        
 			    	result = jsonoutput.toString(); 
+			    	System.out.println("Result JSON - " + result);
 			    	
 				}
 				catch (Exception e) {
