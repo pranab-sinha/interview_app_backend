@@ -21,25 +21,19 @@ public class JSONMessage {
 		}
 		JSONParser jsonParser = new JSONParser();
 		String message = "[" + JSONRequestMessage + "]";
-		System.out.println(message);
+		System.out.println("JSON request message received : " + message);
 		Object obj = jsonParser.parse(message);
-		System.out.println("Inside function" + obj.toString());
+		
 		JSONArray studentList = (JSONArray) obj;
 		Iterator i = studentList.iterator();
-		System.out.println("Testing ---22");
+
 		try {
 			while (i.hasNext()) {
-				System.out.println("Inside loop");
 				JSONObject slide = (JSONObject) i.next();
 
 				JSONObject studentObject = (JSONObject) slide.get("EvertzInterviewApp");
-				System.out.println(studentObject);
-
 				String subsystem = (String) studentObject.get("Subsystem");   
-				System.out.println(subsystem);
-				
 				String command = (String) studentObject.get("Command");   
-				System.out.println(command);
 				
 				if((subsystem.equals("Server")) && (command.equals("ValidateServer"))) {
 					result = CheckServer.getServerIp(message);

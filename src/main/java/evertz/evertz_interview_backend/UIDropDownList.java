@@ -20,17 +20,19 @@ public class UIDropDownList {
 				}
 				JSONParser jsonParser = new JSONParser();
 				String message = JSONRequestMessage;
-				System.out.println(message);
+				System.out.println("JSON request message received : " + message);
+				
 				Object obj = jsonParser.parse(message);
-				System.out.println("Inside function" + obj.toString());
+				
 				JSONArray studentList = (JSONArray) obj;
 				Iterator i = studentList.iterator();
 				try {
 					while (i.hasNext()) {
 						JSONObject slide = (JSONObject) i.next();
+						
 						JSONObject studentObject = (JSONObject) slide.get("EvertzInterviewApp");
-						System.out.println("Hello :- " + studentObject);
 						JSONArray parameterList = (JSONArray) studentObject.get("ParameterList");
+						
 						JSONObject parameters = (JSONObject) parameterList.get(0);
 						details = (String)parameters.get("Details");
 						
@@ -47,10 +49,6 @@ public class UIDropDownList {
 					else if(details.equals("Branch")) {
 						dataToFetch = "branch";
 						keyName = "BranchList";
-					}
-					else if(details.equals("Modules")) {
-						dataToFetch = "modules";
-						keyName = "ModuleList";
 					}
 					
 					String fetchData = "select * from " + dataToFetch + ";";
@@ -79,7 +77,6 @@ public class UIDropDownList {
 			    	jsonoutput.add(jsonFinal);
 		        
 			    	result = jsonoutput.toString(); 
-			    	System.out.println("Result JSON - " + result);
 			    	
 				}
 				catch (Exception e) {

@@ -32,20 +32,20 @@ public class StudentRegistration {
 			return "NULL MESSAGE RECEIVED";
 		}
 		JSONParser jsonParser = new JSONParser();
+		
 		String message = JSONRequestMessage;
-		System.out.println(message);
+		System.out.println("JSON request message received : " + message);
+		
 		Object obj = jsonParser.parse(message);
-		System.out.println("Inside function" + obj.toString());
+
 		JSONArray studentList = (JSONArray) obj;
 		Iterator i = studentList.iterator();
-		System.out.println("Testing ---22");
-		System.out.println("Testing ---2r");
+		
 		try {
 			while (i.hasNext()) {
 				JSONObject slide = (JSONObject) i.next();
 
 				JSONObject studentObject = (JSONObject) slide.get("EvertzInterviewApp");
-				System.out.println("Hello :- " + studentObject);
 
 				String subsystemName = (String) studentObject.get("Subsystem");   
 				String CommandName = (String) studentObject.get("Command");   
@@ -74,7 +74,6 @@ public class StudentRegistration {
 				else {
 					Gender = "b'0'";
 				}
-				System.out.println(Gender);
 				
 				//Handling date format according to DB
 				DateFormat formatter = new SimpleDateFormat("MM-DD-yyyy"); 
@@ -85,7 +84,6 @@ public class StudentRegistration {
 				//Query string to insert registration details
 
 				String updateSQL="INSERT INTO evertz_interview_app.candidate_details ( `REG_NO`, `NAME`, `DOB`, `GENDER`, `EMAIL`, `MOB_NO`, `COLLEGE_DETAILS_ID`, `DEGREE_ID`, `BRANCH_ID`, `GRAD_YEAR`, `CGPA`) VALUES ( '" + registerNumber + "', '" + studentName+ "', '" + dateOfBirth + "', " + Gender + ", '"+ email + "', '"+ Mobile + "', '1', '1', '1', '"+ yearofpassing +"', '"+cgpa +"');";
-				System.out.println(updateSQL);
 				int res = DAOLayer.updateData(updateSQL);
 				
 				if(res == -1) {
