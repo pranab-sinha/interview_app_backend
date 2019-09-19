@@ -78,7 +78,7 @@ public class StudentRegistration {
 
 				//Query string to insert registration details
 
-				String updateSQL="INSERT INTO evertz_interview_app.candidate_details ( `REG_NO`, `NAME`, `DOB`, `GENDER`, `EMAIL`, `MOB_NO`, `COLLEGE_DETAILS_ID`, `DEGREE_ID`, `BRANCH_ID`, `GRAD_YEAR`, `CGPA`) VALUES ( '" + registerNumber + "', '" + studentName+ "', '" + dateOfBirth + "', " + Gender + ", '"+ email + "', '"+ Mobile + "', '1', '1', '1', '"+ yearofpassing +"', '"+cgpa +"');";
+				String updateSQL="INSERT INTO evertz_interview_app.candidate_details ( `REG_NO`, `NAME`, `DOB`, `GENDER`, `EMAIL`, `MOB_NO`, `COLLEGE_DETAILS_ID`, `DEGREE_ID`, `BRANCH_ID`, `GRAD_YEAR`, `CGPA`) VALUES ( '" + registerNumber + "', '" + studentName+ "', '" + dateOfBirth + "', " + Gender + ", '"+ email + "', '"+ Mobile + "', '" + college + "', '" + degree + "', '" + stream + "', '"+ yearofpassing +"', '"+cgpa +"');";
 				int res = DAOLayer.updateData(updateSQL);
 				
 				if(res == -1) {
