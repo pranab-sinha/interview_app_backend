@@ -14,8 +14,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import evertz.evertz_interview_backend.application_db_calls.DBConnect;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.sql.ResultSet;
 
 public class Validate {
 	private String requestedIpFromJSONArray;
@@ -43,24 +46,21 @@ public class Validate {
 	
 	private String validateConnection(String requestedIPString) {
 		
-		InetAddress address;
-		String localIPAddress;
+		String testConnectionQuery;
 		String connectionStatus;
 		try {
-			address = InetAddress.getLocalHost();
-			localIPAddress = "10.42.10.46";
 			
-			if (localIPAddress.contentEquals(requestedIPString)) {
-				connectionStatus = "Connected";
-
-			}
-			else {
+			testConnectionQuery = "select * from degree";
+			ResultSet queryResult = DBConnect.selectData(testConnectionQuery);
+			if(queryResult.next() == false) {
 				connectionStatus = "Not Connected";
 			}
+			connectionStatus = "Connection to DB is successful";
 			
-		} catch (UnknownHostException e) {
 			
-			connectionStatus = "Some Error Occured";
+		} catch (Exception e) {
+			
+			connectionStatus = "Failed to connect to Database Server";
 			e.printStackTrace();
 		}
 		
@@ -70,15 +70,33 @@ public class Validate {
 	@SuppressWarnings("unchecked")
 	public String serverResponseJSON () {
 		
+		String reason;
+		String statusMessage = "";
+		
+		if(connectionStatus.equalsIgnoreCase("Not Connected") || connectionStatus.contains("Failed to connect to Database Server")) {
+			reason = "Database server not connected";
+			statusMessage = "false";
+		}
+		else {
+			reason = "Database server connected";
+			statusMessage = "true";
+		}
+		
 		JSONObject responseParameterList = new JSONObject();
 		responseParameterList.put("ServerIp", requestedIpFromJSONArray);
 		responseParameterList.put("Status", connectionStatus);
+		responseParameterList.put("Reason", reason);
 
 		JSONObject evertzinterviewapp= new JSONObject();
 		evertzinterviewapp.put("Subsystem", "Server"); 
-
-		evertzinterviewapp.put("Command", "ServerStatus");
-		evertzinterviewapp.put("ParameterList", responseParameterList);
+		
+		JSONObject parameterListObject = new JSONObject();
+		parameterListObject.put("ParameterList", responseParameterList);
+		System.out.println("Status received after if condition - " + statusMessage);
+		evertzinterviewapp.put("Command", "ValidateServer");
+		evertzinterviewapp.put("Success", statusMessage);
+		evertzinterviewapp.put("Output", parameterListObject);
+		
 		JSONObject finalJSONObject = new JSONObject(); 
 		finalJSONObject.put("EvertzInterviewApp", evertzinterviewapp);
 

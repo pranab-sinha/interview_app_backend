@@ -69,13 +69,13 @@ public class DispatchToSubsystem {
                             response = validate.serverResponseJSON();
                         }
 
-                        if ((subsystemName.equals("StudentRegistration")) && (commandName.equals("Save"))) {
+                        else if ((subsystemName.equals("Candidate")) && (commandName.equals("Save"))) {
 
                             Candidate candidate = new Candidate(parameterList);
                             response = candidate.register();
                         }
 
-                        if ((subsystemName.equals("UI")) && (commandName.equals("Get"))) {
+                        else if ((subsystemName.equals("UI")) && (commandName.equals("Get"))) {
 
                             UI ui = new UI(parameterList);
                             response = ui.getJsonList(parameterList);

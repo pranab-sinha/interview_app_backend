@@ -119,10 +119,15 @@ public class Candidate {
         }
         
         JSONObject evertzinterviewapp = new JSONObject();
-        evertzinterviewapp.put("Subsystem", "StudentRegistration");
-
-        evertzinterviewapp.put("Command", "Status");
-        evertzinterviewapp.put("ParameterList", parameterList);
+        evertzinterviewapp.put("Subsystem", "Candidate");
+        evertzinterviewapp.put("Success", "true");
+        
+        JSONObject parameterListObject = new JSONObject();
+		parameterListObject.put("ParameterList", parameterList);
+        
+        evertzinterviewapp.put("Output", parameterListObject);
+        
+        evertzinterviewapp.put("Command", "Save");
 
         JSONObject jsonFinal = new JSONObject();
         jsonFinal.put("EvertzInterviewApp", evertzinterviewapp);

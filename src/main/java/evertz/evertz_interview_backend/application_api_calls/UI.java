@@ -30,7 +30,7 @@ public class UI {
             	
                 JSONArray parameterList = JSONRequestMessage;
                 JSONObject parameters = (JSONObject) parameterList.get(0);
-                jsonParameterListDetails = (String) parameters.get("Details");
+                jsonParameterListDetails = (String) parameters.get("UIDropdownField");
 
             
             
@@ -70,8 +70,14 @@ public class UI {
             //JSON evertzinterviewapp object to put all the subsystem,UI,Command and update
             JSONObject evertzinterviewappObj = new JSONObject();
             evertzinterviewappObj.put("Subsystem", "UI");
-            evertzinterviewappObj.put("Command", "Update");
-            evertzinterviewappObj.put("ParameterList", parameterList_obj);
+            evertzinterviewappObj.put("Command", "Get");
+            evertzinterviewappObj.put("Success", "true");
+            
+            JSONObject parameterListObject = new JSONObject();
+    		parameterListObject.put("ParameterList", parameterList_obj);
+            
+            evertzinterviewappObj.put("Output", parameterListObject);
+            
             JSONObject jsonFinalObj = new JSONObject();
             jsonFinalObj.put("EvertzInterviewApp", evertzinterviewappObj);
             
