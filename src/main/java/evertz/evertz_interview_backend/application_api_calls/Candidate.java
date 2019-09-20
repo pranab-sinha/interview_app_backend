@@ -76,6 +76,7 @@ public class Candidate {
             if (res == -1) {
             	
                 response = registerationStatus("Failed+" + registerNumber);
+                
             } else {
             	
                 response = registerationStatus("Success+" + registerNumber);
@@ -98,6 +99,7 @@ public class Candidate {
         String finalJSON;
         String[] temp;
         String delimiter = "\\+";
+        String st = "";
 
         temp = toSplitString.split(delimiter);
         String stringRegistrationStatus = temp[0];
@@ -108,19 +110,22 @@ public class Candidate {
         
         if(stringRegistrationStatus.equals("Success")) {
 
+        	st = "true";
             parameterList.put("Registration", "Success");
             parameterList.put("Reason", "Student registration successful");
         } 
         
         else {
         	
+        	st = "false";
+        	
             parameterList.put("Registration", "Failed");
-            parameterList.put("Reason", "Register number already exists.Please contact the supervisor!");
+            parameterList.put("Reason", "Register number already exists, please contact the supervisor!");
         }
         
         JSONObject evertzinterviewapp = new JSONObject();
         evertzinterviewapp.put("Subsystem", "Candidate");
-        evertzinterviewapp.put("Success", "true");
+        evertzinterviewapp.put("Success", st);
         
         JSONObject parameterListObject = new JSONObject();
 		parameterListObject.put("ParameterList", parameterList);

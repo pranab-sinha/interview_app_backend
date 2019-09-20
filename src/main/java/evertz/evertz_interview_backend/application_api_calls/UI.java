@@ -33,24 +33,27 @@ public class UI {
                 jsonParameterListDetails = (String) parameters.get("UIDropdownField");
 
             
-            
+            String detailsDataFetch = "";
             //Check condition and fetch the data and keyName
             if (jsonParameterListDetails.equals("College")) {
             	dropDownDataToFetch = "college_details";
             	dropDownKeyNameList = "CollegeList";
+            	detailsDataFetch = "select * from " + dropDownDataToFetch + ";";
             } else if (jsonParameterListDetails.equals("Degree")) {
             	dropDownDataToFetch = "degree";
             	dropDownKeyNameList = "DegreeList";
+            	detailsDataFetch = "select * from " + dropDownDataToFetch + ";";
             } else if (jsonParameterListDetails.equals("Branch")) {
             	dropDownDataToFetch = "branch";
             	dropDownKeyNameList = "BranchList";
+            	detailsDataFetch = "select * from " + dropDownDataToFetch + ";";
             } else if (jsonParameterListDetails.equals("Modules")) {
             	dropDownDataToFetch = "modules";
             	dropDownKeyNameList = "ModuleList";
+            	detailsDataFetch = "select * from " + dropDownDataToFetch + " where MANDATORY_MODULE = 0;";
             }
             
             //query to fetch the details from the database
-            String detailsDataFetch = "select * from " + dropDownDataToFetch + ";";
             System.out.println("SQL Query - " + detailsDataFetch);
             ResultSet rs = DBConnect.selectData(detailsDataFetch);
             
