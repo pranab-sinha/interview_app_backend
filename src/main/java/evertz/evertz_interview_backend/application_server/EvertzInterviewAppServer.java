@@ -1,4 +1,4 @@
-package evertz.evertz_interview_backend;
+package evertz.evertz_interview_backend.application_server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -46,7 +46,7 @@ public class EvertzInterviewAppServer {
 		System.out.println("------------");
 		String responseString = "";
 		try {
-			responseString = JSONMessage.JSONParse(value);
+			responseString = DispatchToSubsystem.JSONParse(value);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
