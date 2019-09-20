@@ -1,8 +1,8 @@
-package evertz.evertz_interview_backend;
+package evertz.evertz_interview_backend.application_db_calls;
 
 import java.sql.*;
 
-public class DAOLayer {
+public class DBConnect {
 	private static Connection con;
     static
     {
